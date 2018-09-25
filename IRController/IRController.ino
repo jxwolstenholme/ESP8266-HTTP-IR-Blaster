@@ -944,6 +944,7 @@ String encoding(decode_results *results) {
     case DENON:        output = "DENON";              break;
     case COOLIX:       output = "COOLIX";             break;
     case GREE:         output = "GREE";               break;
+    case LUTRON:       output = "LUTRON";             break;
   }
   return output;
 }
@@ -1393,6 +1394,8 @@ void irblast(String type, String dataStr, unsigned int len, int rdelay, int puls
         irsend.sendRCMM(data, len);
       } else if (type == "gree") {
         irsend.sendGree(data, len);
+      } else if (type == "lutron") {
+        irsend.sendLutron(data, len);
       } else if (type == "roomba") {
         roomba_send(atoi(dataStr.c_str()), pulse, pdelay, irsend);
       }
